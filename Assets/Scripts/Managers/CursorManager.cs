@@ -7,6 +7,22 @@ public class CursorManager : MonoBehaviour
     // Variables publicas
     public bool startCursorState;
 
+    // Singleton
+    public static CursorManager Instance { get; private set; }
+
+    private void Awake()
+    {
+        // Verificacion del singleton
+        if (Instance != null && Instance != this)
+        {
+            Destroy(this);
+        }
+        else
+        {
+            Instance = this;
+        }
+    }
+
     // Start is called before the first frame update
     void Start()
     {

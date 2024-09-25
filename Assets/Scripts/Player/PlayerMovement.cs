@@ -67,6 +67,7 @@ public class PlayerMovement : MonoBehaviour
         if (Input.GetAxis("Run") > 0f)
         {
             speed = runSpeed;
+
         }
         else
         {
