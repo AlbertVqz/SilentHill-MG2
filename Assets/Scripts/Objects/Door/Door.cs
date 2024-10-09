@@ -21,22 +21,13 @@ public class Door : MonoBehaviour
     // funcion de interaccion
     public void Interaction()
     {
-        if (!isLocked)
+        if (isOpen)
         {
-            if (isOpen)
-            {
-                isOpen = false;
-            }
-            else
-            {
-                isOpen = true;
-            }
-            UpdateAnimation();
+            SetIsOpen(false);
         }
         else
         {
-            audioSource.clip = lockedSound;
-            audioSource.Play();
+            SetIsOpen(true);
         }
     }
 
@@ -57,8 +48,16 @@ public class Door : MonoBehaviour
     // funcion para cambiar el estado Open de la puerta
     public void SetIsOpen(bool _state)
     {
-        isOpen= _state;
-        UpdateAnimation();
+        if (!isLocked)
+        {
+            isOpen = _state;
+            UpdateAnimation();
+        }
+        else
+        {
+            audioSource.clip = lockedSound;
+            audioSource.Play();
+        }
     }
 
     // funcion para cambiar el estado Locked de la puerta

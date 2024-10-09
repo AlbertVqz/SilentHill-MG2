@@ -174,6 +174,51 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6381557405832059871, guid: bcf071242b2445d45b681783c381e430, type: 3}
   m_PrefabInstance: {fileID: 997388752}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &269777475
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 269777476}
+  - component: {fileID: 269777477}
+  m_Layer: 0
+  m_Name: HallwayManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &269777476
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 269777475}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 808107502}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &269777477
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 269777475}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c611297cd8111a24ea0d491530b68359, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hallways: []
 --- !u!1 &414907748
 GameObject:
   m_ObjectHideFlags: 0
@@ -334,7 +379,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6588393323861778547, guid: 0e84dce826d10d647bbb12070642241f, type: 3}
       propertyPath: rotationSpeed
-      value: 600
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 7424902149221691029, guid: 0e84dce826d10d647bbb12070642241f, type: 3}
       propertyPath: detectedLayers.m_Bits
@@ -345,6 +390,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0e84dce826d10d647bbb12070642241f, type: 3}
+--- !u!114 &596475233 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 312318334516874729, guid: bcf071242b2445d45b681783c381e430, type: 3}
+  m_PrefabInstance: {fileID: 5186115327717217749}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be4242f313de11e4386bc7219e82fd27, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &615458145
 GameObject:
   m_ObjectHideFlags: 0
@@ -548,6 +604,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1021211930}
+  - {fileID: 269777476}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &830000667
@@ -1100,6 +1157,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
+      - m_Target: {fileID: 269777477}
+        m_TargetAssemblyTypeName: HallwayManager, Assembly-CSharp
+        m_MethodName: LoadHallway
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
   AfterTime:
     m_PersistentCalls:
       m_Calls: []
@@ -1545,7 +1614,7 @@ Transform:
   m_GameObject: {fileID: 2047779478}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 19.87, y: 3.534, z: -9.939}
+  m_LocalPosition: {x: 19.55, y: 3.534, z: -9.939}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1566,7 +1635,43 @@ MonoBehaviour:
   timeToFinish: 3
   OnPlayerDetected:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 596475233}
+        m_TargetAssemblyTypeName: Door, Assembly-CSharp
+        m_MethodName: SetIsOpen
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 596475233}
+        m_TargetAssemblyTypeName: Door, Assembly-CSharp
+        m_MethodName: SetIsLocked
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 269777477}
+        m_TargetAssemblyTypeName: HallwayManager, Assembly-CSharp
+        m_MethodName: UnloadHallway
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
   AfterTime:
     m_PersistentCalls:
       m_Calls: []
